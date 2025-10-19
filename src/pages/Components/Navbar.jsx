@@ -39,22 +39,12 @@ const Navbar = ({ user, onSearchResults, onLogout }) => {
         pauseOnHover: false,
         pauseOnFocusLoss: false,
         draggable: true,
-            textAlign: "center",
-          });
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 1500);
-        } else if (status === 202) {
-          toast.warn(`${message}`, {
-            position: "top-center",
-            autoClose: 2000,
-            pauseOnHover: false,
-            pauseOnFocusLoss: false,
-            draggable: true,
-            textAlign: "center",
-          });
-        }
+        textAlign: "center",
       });
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
+    }
   };
 
   // Function to determine whether a link should be underlined

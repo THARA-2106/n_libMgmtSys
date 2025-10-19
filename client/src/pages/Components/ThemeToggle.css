@@ -1,0 +1,236 @@
+/* Theme Toggle Styles */
+.theme-toggle-container {
+  position: relative;
+  display: inline-block;
+}
+
+.theme-toggle-button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.125rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.theme-toggle-button:hover::before,
+.theme-toggle-button:focus::before {
+  left: 0;
+}
+
+.theme-toggle-button:hover,
+.theme-toggle-button:focus {
+  color: white;
+  transform: scale(1.05);
+  outline: none;
+}
+
+.theme-toggle-button:active {
+  transform: scale(0.95);
+}
+
+.theme-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  animation: slideDown 0.2s ease-out;
+  min-width: 140px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  color: #4a5568;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.theme-option:hover {
+  background: #f7fafc;
+  color: #2d3748;
+}
+
+.theme-option:active {
+  background: #edf2f7;
+}
+
+.theme-icon {
+  font-size: 1rem;
+  width: 1rem;
+  text-align: center;
+}
+
+.theme-icon.light {
+  color: #f6ad55;
+}
+
+.theme-icon.dark {
+  color: #4a5568;
+}
+
+.theme-icon.auto {
+  color: #718096;
+}
+
+.checkmark {
+  margin-left: auto;
+  color: #48bb78;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.theme-dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: transparent;
+}
+
+/* Dark theme styles */
+.dark-theme .theme-dropdown {
+  background: #2d3748;
+  border-color: #4a5568;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .theme-option {
+  color: #a0aec0;
+}
+
+.dark-theme .theme-option:hover {
+  background: #4a5568;
+  color: #e2e8f0;
+}
+
+.dark-theme .theme-option:active {
+  background: #2d3748;
+}
+
+.dark-theme .theme-icon.dark {
+  color: #e2e8f0;
+}
+
+.dark-theme .theme-icon.auto {
+  color: #a0aec0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .theme-dropdown {
+    right: -0.5rem;
+    min-width: 120px;
+  }
+  
+  .theme-option {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+  }
+  
+  .theme-icon {
+    font-size: 0.875rem;
+  }
+}
+
+/* Animation for theme transitions */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Smooth transitions for theme changes */
+.theme-toggle-button {
+  transition: all 0.3s ease, transform 0.1s ease;
+}
+
+.theme-option {
+  transition: all 0.2s ease;
+}
+
+/* Focus styles for accessibility */
+.theme-toggle-button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+
+.theme-option:focus {
+  outline: 2px solid #667eea;
+  outline-offset: -2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .theme-dropdown {
+    border-width: 2px;
+  }
+  
+  .theme-option {
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .theme-option:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-button,
+  .theme-option,
+  .theme-dropdown {
+    transition: none;
+  }
+  
+  .theme-dropdown {
+    animation: none;
+  }
+  
+  * {
+    transition: none !important;
+  }
+}
